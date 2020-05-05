@@ -1,92 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="508dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="1dp"
-            android:contentDescription="@android:string/untitled"
-            app:srcCompat="@android:color/holo_orange_dark"
-            tools:srcCompat="@android:color/holo_orange_dark" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="212dp"
-            android:contentDescription="@android:string/untitled"
-            app:srcCompat="@android:color/holo_orange_light"
-            tools:srcCompat="@android:color/holo_orange_light" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="508dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@android:string/untitled"
+                app:srcCompat="@android:color/holo_orange_dark"
+                tools:srcCompat="@android:color/holo_orange_dark" />
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView2"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="33dp"
-            android:layout_marginRight="33dp"
-            android:layout_marginBottom="51dp"
-            android:clickable="false"
-            android:editable="false"
-            android:ems="10"
-            android:enabled="true"
-            android:focusable="auto"
-            android:focusableInTouchMode="false"
-            android:inputType="none"
-            android:text="Some Kind of Matching Game"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="212dp"
+                android:contentDescription="@android:string/untitled"
+                app:srcCompat="@android:color/holo_orange_light"
+                tools:srcCompat="@android:color/holo_orange_light" />
 
-        <Button
-            android:id="@+id/start_game_button"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="89dp"
-            android:layout_marginRight="89dp"
-            android:layout_marginBottom="347dp"
-            android:background="@android:color/darker_gray"
-            android:text="START" />
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="336dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView2"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginBottom="51dp"
+                android:clickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:enabled="true"
+                android:focusable="auto"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:text="Some Kind of Matching Game"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/credits_button"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="90dp"
-            android:layout_marginRight="90dp"
-            android:layout_marginBottom="248dp"
-            android:background="@android:color/darker_gray"
-            android:text="Credits" />
+            <Button
+                android:id="@+id/start_game_button"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="89dp"
+                android:layout_marginRight="89dp"
+                android:layout_marginBottom="347dp"
+                android:background="@android:color/darker_gray"
+                android:text="START" />
 
-        <Button
-            android:id="@+id/quit_button"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="89dp"
-            android:layout_marginRight="89dp"
-            android:layout_marginBottom="150dp"
-            android:background="@android:color/darker_gray"
-            android:text="quit" />
+            <Button
+                android:id="@+id/credits_button"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="90dp"
+                android:layout_marginRight="90dp"
+                android:layout_marginBottom="248dp"
+                android:background="@android:color/darker_gray"
+                android:text="Credits" />
 
-    </RelativeLayout>
-</LinearLayout>
+            <Button
+                android:id="@+id/quit_button"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="89dp"
+                android:layout_marginRight="89dp"
+                android:layout_marginBottom="150dp"
+                android:background="@android:color/darker_gray"
+                android:text="quit" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

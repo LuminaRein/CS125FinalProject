@@ -1,6 +1,7 @@
 package com.example.cs125finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +9,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.cs125finalproject.databinding.ActivityMainGameBinding;
+import com.example.cs125finalproject.databinding.ActivityMainMenuBinding;
+
 public class MainActivity extends AppCompatActivity {
+
+    ActivityMainMenuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_menu);
         configureButtons();
-
     }
 
     private void finishGame() {
@@ -27,10 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void configureButtons() {
 
-        Button startGame = (Button) findViewById(R.id.start_game_button);
-        Button quitGame = (Button) findViewById(R.id.quit_button);
-
-        Log.d("??", startGame.toString());
+        Button startGame = binding.startGameButton;
+        Button quitGame = binding.quitButton;
 
         startGame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }
