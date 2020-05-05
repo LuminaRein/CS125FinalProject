@@ -48,7 +48,7 @@ public class MainGameActivity extends AppCompatActivity {
     private int gameState = GAME_ON_GOING;
     private final int GAME_END = 1;
 
-    private final int CIRCLE_SOCRE = 100;
+    private final int CIRCLE_SCORE = 100;
     private final int LEFT_SCORE = 800;
     private final int RIGHT_SCORE = 1000;
     private final int MIDDLE_SCORE = 500;
@@ -140,6 +140,19 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     private void beginAnew() {
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        Editor editor = prefs.edit();
+
+        //Easter Egg
+        if (prefs.getInt(HIGH_SCORE, 0) != 15000) {
+            int tryNum = prefs.getInt(TRYS, 0);
+            if (prefs.contains(TRYS)) {
+                editor.putInt(TRYS, tryNum+1);
+            } else {
+                editor.putInt(TRYS, 1);
+            }
+        }
+        editor.commit();
         Intent intent = new Intent(this, MainGameActivity.class);
         startActivity(intent);
         finish();
@@ -163,8 +176,9 @@ public class MainGameActivity extends AppCompatActivity {
 
         //Easter Egg
         if (prefs.getInt(HIGH_SCORE, 0) != 15000) {
+            int tryNum = prefs.getInt(TRYS, 0);
             if (prefs.contains(TRYS)) {
-                editor.putInt(TRYS, prefs.getInt(TRYS, 0)+1);
+                editor.putInt(TRYS, tryNum+1);
             } else {
                 editor.putInt(TRYS, 1);
             }
@@ -175,34 +189,41 @@ public class MainGameActivity extends AppCompatActivity {
         builder.setTitle("Game over!");
         builder.setIcon(R.drawable.diamond);
         String message;
-        message  = "        Your score is: " + score.toString() + "\n";
+        message  = "  Your score is: " + score.toString() + "\n";
 
         binding.scoreLabel.setText("Final Score: " + score.toString());
 
         Integer highScore = 0;
-        if (prefs.contains(HIGH_SCORE)) {
+        if (prefs.contains(HIGH_SCORE) && prefs.getInt(HIGH_SCORE, 0) != 0) {
 
             highScore = prefs.getInt(HIGH_SCORE, 0);
-            message += "        Your High Score was: " + highScore.toString() + "\n";
+            message += "  Your High Score was: " + highScore.toString() + "\n";
             //Beaten High Score
             if (highScore < score) {
                 highScore = score;
                 editor.putInt(HIGH_SCORE, highScore);
-                message += "        You've beaten the best of you in the past!\n";
+                message += "  You've beat the best of you in the past!\n";
                 binding.highScoreTextView.setText("High Score: " + highScore);
+            } else if (highScore.equals(score)) {
+                message += "  Keep it Up!\n";
             } else {
-                message += "        The you in the past is superior it would seem!\n";
+                message += "  The you in the past is superior it would seem!\n";
             }
 
             if (highScore == 15000 || score == 15000) {
-                message += "        You have achieved the highest score possible!\n" +
-                        "       See the credits in the main menu for easter eggs!\n";
+                message += "  You have achieved the highest score possible!\n" +
+                        "  See the credits in the main menu for easter eggs!\n";
             }
 
         } else {
+            highScore = score;
             editor.putInt(HIGH_SCORE, score);
-            message += "            Your new High Score is: " + highScore.toString() + "!\n";
-            binding.highScoreTextView.setText("High Score: " + highScore);
+            message += "  Your new High Score is: " + score.toString() + "!\n";
+            if (highScore == 15000 || score == 15000) {
+                message += "  You have achieved the highest score possible!\n" +
+                        "  See the credits in the main menu for easter eggs!\n";
+            }
+            binding.highScoreTextView.setText("High Score: " + score);
         }
         editor.commit();
         builder.setMessage(message);
@@ -238,7 +259,7 @@ public class MainGameActivity extends AppCompatActivity {
 
         Integer estimatedScore = 0;
         estimatedScore = stats[BUTTON_MIDDLE] * MIDDLE_SCORE + stats[BUTTON_RIGHT] * RIGHT_SCORE
-                + stats[BUTTON_LEFT] * LEFT_SCORE + stats[BUTTON_CIRCLE] * CIRCLE_SOCRE;
+                + stats[BUTTON_LEFT] * LEFT_SCORE + stats[BUTTON_CIRCLE] * CIRCLE_SCORE;
         score = estimatedScore;
         EditText textView = binding.scoreLabel;
         textView.setText("Estimated Score: " + estimatedScore.toString());

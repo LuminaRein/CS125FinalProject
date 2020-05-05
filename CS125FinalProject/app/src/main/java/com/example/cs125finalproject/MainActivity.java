@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_menu);
+        //cheat(0, 11);
         configureButtons();
     }
 
@@ -33,6 +34,23 @@ public class MainActivity extends AppCompatActivity {
 
         finish();
 
+    }
+
+    private void cheat(int highscore, int trys) {
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(HIGH_SCORE, highscore);
+
+        if (highscore == 0) {
+
+            editor.putInt(TRYS, highscore);
+
+        } else {
+
+            editor.putInt(TRYS, trys);
+        }
+
+        editor.commit();
     }
 
     private void configureButtons() {
@@ -94,8 +112,27 @@ public class MainActivity extends AppCompatActivity {
         if (prefs.getInt(HIGH_SCORE, 0) == 15000) {
             Integer trys = prefs.getInt(TRYS, 1);
             message += "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n";
-            message += "|  Trys You Took to Get The First 15000: " + trys.toString() + "\t\t|\n";
+            message += " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+            String msg =  "Trys You Took to Get The First 15000:";
+
+            if (trys >= 10 && trys < 100) {
+                msg = "|  " + msg;
+                msg+= (" " + trys.toString() + "\t|\n");
+
+            } else if (trys >= 100) {
+                msg = "| " + msg;
+                msg += (trys.toString() + "\t|\n");
+                msg += "|  Poor Thing...... \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n";
+
+            } else {
+                msg = "|  " + msg;
+                msg += (" " + trys.toString() + "\t\t|\n");
+                msg += "|  ??? You must've cheated!!\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n";
+
+            }
+            message += msg;
             message += "|  Yeah We Recorded That!! Gotcha!\t\t\t\t\t\t\t\t|\n";
+            message += " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
         }
         message += "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n" +
                 "|\t\t\t\t\t\t\tThanks for playing my game!\t\t\t\t\t\t\t|\n" +
