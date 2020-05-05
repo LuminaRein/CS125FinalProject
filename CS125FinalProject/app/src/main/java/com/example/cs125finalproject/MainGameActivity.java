@@ -128,7 +128,7 @@ public class MainGameActivity extends AppCompatActivity {
                 "\tIV. Circle Button: 100 pts\n" +
                 "You will also be awarded 6000 pts whenever all tiles on the screen match, including Circle Buttons\n\n"+
                 "Therefore, the theoretical maximum points is 15000 pts. It requires both a bit of luck and a bit of master" +
-                "mind. If my calculations are correct, since the number of Middle Buttons are usually around four to five, the chance of getting" +
+                "mind. If my calculations are correct, since the number of Middle Buttons are usually around four to five, the chance of getting " +
                 "the highest score with the right technique is around 50% * 50% * 50% * 50% = 6.25% to 50 * 50% * 50% * 50% * 50%.= 3.125%. You " +
                 "must be REALLY LUCKY to get it! Screenshot it to your friends and ruin their days!\n" +
                 "****************************\n" +
@@ -159,6 +159,7 @@ public class MainGameActivity extends AppCompatActivity {
         }
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
         Editor editor = prefs.edit();
+
 
         //Easter Egg
         if (prefs.getInt(HIGH_SCORE, 0) != 15000) {

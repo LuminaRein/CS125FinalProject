@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
         Button startGame = binding.startGameButton;
         Button quitGame = binding.quitButton;
         Button credits = binding.creditsButton;
-
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(HIGH_SCORE, 0);
+        editor.commit();
         startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public  void onClick(final View v) {
