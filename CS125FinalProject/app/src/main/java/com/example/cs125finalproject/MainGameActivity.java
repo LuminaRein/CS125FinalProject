@@ -161,10 +161,12 @@ public class MainGameActivity extends AppCompatActivity {
         Editor editor = prefs.edit();
 
         //Easter Egg
-        if (prefs.contains(TRYS)) {
-            editor.putInt(TRYS, prefs.getInt(TRYS, 0)+1);
-        } else {
-            editor.putInt(TRYS, 1);
+        if (prefs.getInt(HIGH_SCORE, 0) != 15000) {
+            if (prefs.contains(TRYS)) {
+                editor.putInt(TRYS, prefs.getInt(TRYS, 0)+1);
+            } else {
+                editor.putInt(TRYS, 1);
+            }
         }
 
         //Build Game Over Alert Dialog
@@ -173,7 +175,6 @@ public class MainGameActivity extends AppCompatActivity {
         builder.setIcon(R.drawable.diamond);
         String message;
         message  = "        Your score is: " + score.toString() + "\n";
-
 
         binding.scoreLabel.setText("Final Score: " + score.toString());
 
